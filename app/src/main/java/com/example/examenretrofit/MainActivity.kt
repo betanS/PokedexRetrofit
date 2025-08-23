@@ -49,7 +49,7 @@ fun PokemonScreen(onFetch: ((List<Pokemon>) -> Unit) -> Unit) {
                 pokemons = result
                 // 👉 Logcat: imprime la lista completa
                 result.forEach { pokemon ->
-                    Log.d("POKEDEX", "ID: ${pokemon.id}, Nombre: ${pokemon.name}, Tipo: ${pokemon.type}")
+                    Log.d("POKEDEX", "ID: ${pokemon.id}, Nombre: ${pokemon.name}, Tipo: ${pokemon.type}, Peso: ${pokemon.weight}, Altura: ${pokemon.height}")
                 }
             }
         }) {
