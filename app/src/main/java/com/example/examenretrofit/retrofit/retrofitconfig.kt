@@ -17,10 +17,4 @@ interface PokemonApi {
     @GET("api/Pokemon/GetPokemons") // Ruta donde se encuentra el json
     suspend fun getPokemons(): List<Pokemon>
 }
-data class Pokemon( //Modelo de datos
-    val id: Int,
-    val name: String,
-    val type: String,
-    val weight: Int,
-    val height: Int
-)
+
