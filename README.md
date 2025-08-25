@@ -13,9 +13,9 @@ This project is made for **learning purposes**: exploring mobile development, AP
 
 ## 🚀 Features 
 - 📖 View Pokémon list with details (name, type, weight, height).  
-- ➕ Add new Pokémon to the database.  
+- ➕ Add new Pokémon to the database.  (Upcoming)
 - ✏️ Edit existing Pokémon information.  
-- ❌ Delete Pokémon from the Pokedex.  
+- ❌ Delete Pokémon from the Pokedex.  (Upcoming)
 - 🌐 Connects to an ASP.NET API with Swagger documentation.  
 - 🗄️ PostgreSQL database integration.  
 - 🎨 Modern UI built with Jetpack Compose.
@@ -26,7 +26,8 @@ This project is made for **learning purposes**: exploring mobile development, AP
 ## 🛠️ Tech Stack
 **Frontend (Mobile App):**
 - Kotlin  
-- Jetpack Compose  
+- Jetpack Compose
+- Material 3 (Jetpack Compose Material Design)    
 
 **Backend (API):**
 - ASP.NET Core Web API  
