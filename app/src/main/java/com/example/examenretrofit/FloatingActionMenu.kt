@@ -11,8 +11,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -44,7 +42,6 @@ fun FabMenuDemo() {
                 FabMenuItem(icon = Icons.Default.Add, label = "Añadir") { /* Acción */ }
                 FabMenuItem(icon = Icons.Default.Edit, label = "Modificar") { /* Acción */ }
                 FabMenuItem(icon = Icons.Default.Delete, label = "Borrar") { /* Acción */ }
-                FabMenuItem(icon = Icons.Default.Refresh, label = "Actualizar") { /* Acción */ }
                 FabMenuItem(icon = Icons.Default.Close, label = "Cerrar") { isMenuOpen = false }
             }
         }

@@ -18,3 +18,10 @@ interface PokemonApi {
     suspend fun getPokemons(): List<Pokemon>
 }
 
+data class Pokemon(
+    val id: Int,
+    val name: String,
+    val type: String,
+    val weight: Int,
+    val height: Int
+)
