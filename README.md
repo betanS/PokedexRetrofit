@@ -1,17 +1,17 @@
-# 📱 Pokedex App  
+# 📱 Pokedex App 🐱
 
-![Kotlin](https://img.shields.io/badge/Kotlin-1.9-blue?logo=kotlin)  
-![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-UI-orange?logo=android)  
-![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-API-5C2D91?logo=dotnet)  
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-DB-336791?logo=postgresql)  
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)  
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.9-blue?logo=kotlin&logoColor=white)](https://kotlinlang.org/)  
+[![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-UI-brightgreen?logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)  
+[![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-API-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/apps/aspnet)  
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-DB-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)  
 
 A mobile Pokedex application built with **Kotlin + Jetpack Compose**, connected to an **ASP.NET Web API** (with Swagger) and using a **PostgreSQL database**.  
 This project is made for **learning purposes**: exploring mobile development, API integration, and database management.  
 
 ---
 
-## 🚀 Features
+## 🚀 Features 
 - 📖 View Pokémon list with details (name, type, weight, height).  
 - ➕ Add new Pokémon to the database.  
 - ✏️ Edit existing Pokémon information.  
