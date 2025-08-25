@@ -1,8 +1,12 @@
 package com.example.examenretrofit.retrofit
 
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
+import retrofit2.http.PUT
+import retrofit2.http.Path
 
 object RetrofitInstance {
     val api: PokemonApi by lazy { //asicrono
@@ -16,6 +20,10 @@ object RetrofitInstance {
 interface PokemonApi {
     @GET("api/Pokemon/GetPokemons") // Ruta donde se encuentra el json
     suspend fun getPokemons(): List<Pokemon>
+    @PUT("api/Pokemon/EditPokemon/{id}")
+    suspend fun updatePokemon(@Path("id") id: Int, @Body pokemon: Pokemon): Response<Unit>
+
+
 }
 
 data class Pokemon(
