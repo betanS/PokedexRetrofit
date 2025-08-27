@@ -51,7 +51,9 @@ fun FabMenuDemo() {
                     showEditDialog = true
                     isMenuOpen = false
                 }
-                FabMenuItem(icon = Icons.Default.Delete, label = "Borrar") { /* Acción */ }
+                FabMenuItem(icon = Icons.Default.Delete, label = "Borrar") {
+                    showDeleteDialog = true
+                    isMenuOpen = false }
                 FabMenuItem(icon = Icons.Default.Close, label = "Cerrar") { isMenuOpen = false }
             }
         }
