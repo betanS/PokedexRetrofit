@@ -32,9 +32,10 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun FabMenuDemo() {
+    val coroutineScope = rememberCoroutineScope()
     var isMenuOpen by remember { mutableStateOf(false) }
     var showEditDialog by remember { mutableStateOf(false) }
-
+    var showDeleteDialog by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         // FAB Menu Items
@@ -70,8 +71,6 @@ fun FabMenuDemo() {
             )
         }
         if (showEditDialog) {
-            val coroutineScope = rememberCoroutineScope()
-
             EditPokemonDialog(
                 onDismiss = { showEditDialog = false },
                 onConfirm = { id, pokemon ->
@@ -80,12 +79,31 @@ fun FabMenuDemo() {
                             val response = RetrofitInstance.api.updatePokemon(id, pokemon)
                             if (response.isSuccessful) {
                                 Log.d("POKEDEX", "Pokémon actualizado correctamente")
-                                // Aquí podrías recargar la lista si lo deseas
                             } else {
                                 Log.e("POKEDEX", "Error al actualizar: ${response.code()}")
                             }
                         } catch (e: Exception) {    //Gracias Copilot, por ayudar mi código, gracias por bendecir estas líneas que tanto dolor de cabeza sudor y lagrimas me han generado, gracias IAs del 2025.
                             Log.e("POKEDEX", "Excepción al actualizar: ${e.message}")
+                        }
+                    }
+                }
+            )
+
+        }
+        if (showDeleteDialog) {
+            DeletePokemonDialog(
+                onDismiss = { showDeleteDialog = false },
+                onConfirm = { id ->
+                    coroutineScope.launch {
+                        try {
+                            val response = RetrofitInstance.api.deletePokemon(id)
+                            if (response.isSuccessful) {
+                                Log.d("POKEDEX", "Pokémon eliminado correctamente")
+                            } else {
+                                Log.e("POKEDEX", "Error al eliminar: ${response.code()}")
+                            }
+                        } catch (e: Exception) {
+                            Log.e("POKEDEX", "Excepción al eliminar: ${e.message}")
                         }
                     }
                 }

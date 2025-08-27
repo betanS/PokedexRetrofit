@@ -5,6 +5,7 @@ import retrofit2.http.GET
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
@@ -22,6 +23,8 @@ interface PokemonApi {
     suspend fun getPokemons(): List<Pokemon>
     @PUT("api/Pokemon/EditPokemon/{id}")
     suspend fun updatePokemon(@Path("id") id: Int, @Body pokemon: Pokemon): Response<Unit>
+    @DELETE("api/Pokemon/DeletePokemon/{id}")
+    suspend fun deletePokemon(@Path("id") id: Int): Response<Unit>
 
 
 }
