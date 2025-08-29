@@ -36,6 +36,8 @@ fun FabMenuDemo() {
     var isMenuOpen by remember { mutableStateOf(false) }
     var showEditDialog by remember { mutableStateOf(false) }
     var showDeleteDialog by remember { mutableStateOf(false) }
+    var showCreateDialog by remember { mutableStateOf(false) }
+
 
     Box(modifier = Modifier.fillMaxSize()) {
         // FAB Menu Items
@@ -46,7 +48,9 @@ fun FabMenuDemo() {
                     .padding(end = 24.dp, bottom = 96.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                FabMenuItem(icon = Icons.Default.Add, label = "Añadir") { /* Acción */ }
+                FabMenuItem(icon = Icons.Default.Add, label = "Añadir") {
+                    showCreateDialog = true
+                    isMenuOpen = false }
                 FabMenuItem(icon = Icons.Default.Edit, label = "Modificar") {
                     showEditDialog = true
                     isMenuOpen = false
@@ -91,6 +95,25 @@ fun FabMenuDemo() {
                 }
             )
 
+        }
+        if (showCreateDialog) {
+            CreatePokemonDialog(
+                onDismiss = { showCreateDialog = false },
+                onConfirm = { pokemon ->
+                    coroutineScope.launch {
+                        try {
+                            val response = RetrofitInstance.api.createPokemon(pokemon)
+                            if (response.isSuccessful) {
+                                Log.d("POKEDEX", "Pokémon creado: ${response.body()?.name}")
+                            } else {
+                                Log.e("POKEDEX", "Error al crear: ${response.code()}")
+                            }
+                        } catch (e: Exception) {
+                            Log.e("POKEDEX", "Excepción al crear: ${e.message}")
+                        }
+                    }
+                }
+            )
         }
         if (showDeleteDialog) {
             DeletePokemonDialog(

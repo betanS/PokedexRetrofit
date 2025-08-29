@@ -6,6 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.DELETE
+import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
@@ -21,6 +22,9 @@ object RetrofitInstance {
 interface PokemonApi {
     @GET("api/Pokemon/GetPokemons") // Ruta donde se encuentra el json
     suspend fun getPokemons(): List<Pokemon>
+
+    @POST("api/Pokemon/CreatePokemon")
+    suspend fun createPokemon(@Body pokemon: Pokemon): Response<Pokemon>
     @PUT("api/Pokemon/EditPokemon/{id}")
     suspend fun updatePokemon(@Path("id") id: Int, @Body pokemon: Pokemon): Response<Unit>
     @DELETE("api/Pokemon/DeletePokemon/{id}")
