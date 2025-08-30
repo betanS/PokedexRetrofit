@@ -1,4 +1,4 @@
-package com.example.examenretrofit
+package com.example.examenretrofit.Dialogs
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.AlertDialog

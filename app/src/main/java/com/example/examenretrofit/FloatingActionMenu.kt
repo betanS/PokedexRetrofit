@@ -27,6 +27,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import com.example.examenretrofit.Dialogs.CreatePokemonDialog
+import com.example.examenretrofit.Dialogs.DeletePokemonDialog
+import com.example.examenretrofit.Dialogs.EditPokemonDialog
 import com.example.examenretrofit.retrofit.RetrofitInstance
 import kotlinx.coroutines.launch
 
