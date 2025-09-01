@@ -13,7 +13,7 @@ import retrofit2.http.Path
 object RetrofitInstance {
     val api: PokemonApi by lazy { //asicrono
         Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:5102/") //  puerto con 10.0.2.2 enfocado en el emulador,  en web sería el equivalente de localhost
+            .baseUrl("http://135.125.202.45:5000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(PokemonApi::class.java)

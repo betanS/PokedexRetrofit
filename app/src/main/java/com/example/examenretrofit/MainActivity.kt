@@ -25,8 +25,10 @@ class MainActivity : ComponentActivity() {
         lifecycleScope.launch {
             try {
                 val pokemons = RetrofitInstance.api.getPokemons()
+                android.util.Log.d("API", "Pokemons recibidos: $pokemons")
                 onResult(pokemons)
             } catch (e: Exception) {
+                android.util.Log.e("API", "Error al obtener pokemons: ${e.message}")
                 e.printStackTrace()
                 onResult(emptyList())
             }
