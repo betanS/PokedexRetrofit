@@ -55,18 +55,19 @@ fun PokemonCard(pokemon: Pokemon) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = "NºPokedex: ${pokemon.id}",
-                    style = MaterialTheme.typography.titleMedium
-                )
-                Text(text = "Nombre: ${pokemon.name}", style = MaterialTheme.typography.titleMedium)
-                Text(text = "Tipo: ${pokemon.type}", style = MaterialTheme.typography.bodyMedium)
+                    style = MaterialTheme.typography.titleMedium)
+                Text(
+                    text = "Nombre: ${pokemon.name}",
+                    style = MaterialTheme.typography.titleMedium)
+                Text(
+                    text = "Tipo: ${pokemon.type}",
+                    style = MaterialTheme.typography.bodyMedium)
                 Text(
                     text = "Peso: ${pokemon.weight} kg",
-                    style = MaterialTheme.typography.bodySmall
-                )
+                    style = MaterialTheme.typography.bodySmall)
                 Text(
                     text = "Altura: ${pokemon.height} cm",
-                    style = MaterialTheme.typography.bodySmall
-                )
+                    style = MaterialTheme.typography.bodySmall)
             }
         }
     }
