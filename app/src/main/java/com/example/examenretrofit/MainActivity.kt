@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MaterialTheme {                                     //REFACTORIZAR
+            MaterialTheme {
                 //Llamada a PokemonScreen (pagina principal)
                 PokemonScreen { fetchPokemons(it) }
             }

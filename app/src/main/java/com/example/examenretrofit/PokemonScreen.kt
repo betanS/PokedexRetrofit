@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,6 +27,16 @@ import com.example.examenretrofit.retrofit.Pokemon
 @Composable
 fun PokemonScreen(onFetch: ((List<Pokemon>) -> Unit) -> Unit) {
     var pokemons by remember { mutableStateOf<List<Pokemon>>(emptyList()) }
+
+    val refreshCallback = rememberUpdatedState(newValue = onFetch)
+
+    val onRefresh = {
+        Log.d("POKEDEX", "Refrescando lista de Pokémon")
+        refreshCallback.value { result -> pokemons = result }
+    }
+
+
+
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center) {
                 Button( modifier =
@@ -34,13 +45,7 @@ fun PokemonScreen(onFetch: ((List<Pokemon>) -> Unit) -> Unit) {
                         .padding(top = 60.dp),
                     colors =  ButtonDefaults.buttonColors(Color(0xFF43A047)
                 ), onClick = {
-                    onFetch { result ->
-                        pokemons = result
-                        // 👉 Logcat: imprime la lista completa
-                        result.forEach { pokemon ->
-                            Log.d("POKEDEX", "ID: ${pokemon.id}, Nombre: ${pokemon.name}, Tipo: ${pokemon.type}, Peso: ${pokemon.weight}, Altura: ${pokemon.height}")
-                        }
-                    }
+                        onRefresh()
                 }) {
                     Text("Cargar Pokemons")
                 }
@@ -50,5 +55,5 @@ fun PokemonScreen(onFetch: ((List<Pokemon>) -> Unit) -> Unit) {
                     }
                 }
             }
-    FabMenuDemo()
+    FabMenuDemo(onRefresh = onRefresh)
         }

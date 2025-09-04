@@ -34,7 +34,7 @@ import com.example.examenretrofit.retrofit.RetrofitInstance
 import kotlinx.coroutines.launch
 
 @Composable
-fun FabMenuDemo() {
+fun FabMenuDemo(onRefresh: () -> Unit) {
     val coroutineScope = rememberCoroutineScope()
     var isMenuOpen by remember { mutableStateOf(false) }
     var showEditDialog by remember { mutableStateOf(false) }
@@ -88,6 +88,7 @@ fun FabMenuDemo() {
                             val response = RetrofitInstance.api.updatePokemon(id, pokemon)
                             if (response.isSuccessful) {
                                 Log.d("POKEDEX", "Pokémon actualizado correctamente")
+                                onRefresh()
                             } else {
                                 Log.e("POKEDEX", "Error al actualizar: ${response.code()}")
                             }
@@ -108,6 +109,7 @@ fun FabMenuDemo() {
                             val response = RetrofitInstance.api.createPokemon(pokemon)
                             if (response.isSuccessful) {
                                 Log.d("POKEDEX", "Pokémon creado: ${response.body()?.name}")
+                                onRefresh()
                             } else {
                                 Log.e("POKEDEX", "Error al crear: ${response.code()}")
                             }
@@ -127,6 +129,7 @@ fun FabMenuDemo() {
                             val response = RetrofitInstance.api.deletePokemon(id)
                             if (response.isSuccessful) {
                                 Log.d("POKEDEX", "Pokémon eliminado correctamente")
+                                onRefresh()
                             } else {
                                 Log.e("POKEDEX", "Error al eliminar: ${response.code()}")
                             }
