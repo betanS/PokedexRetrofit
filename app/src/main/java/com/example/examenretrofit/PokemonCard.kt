@@ -36,7 +36,7 @@ fun getTypeGradient(typeString: String): Brush {
     }
 }
 @Composable
-fun PokemonCard(pokemon: Pokemon) {
+fun PokemonCard(pokemon: Pokemon, onEdit: (Pokemon) -> Unit) {
     val backgroundBrush = getTypeGradient(pokemon.type)
     Box(
         modifier = Modifier
@@ -53,6 +53,7 @@ fun PokemonCard(pokemon: Pokemon) {
         ) {
             //Las tarjetas en cuestion
             Column(modifier = Modifier.padding(16.dp)) {
+
                 Text(
                     text = "NºPokedex: ${pokemon.id}",
                     style = MaterialTheme.typography.titleMedium)
@@ -69,6 +70,11 @@ fun PokemonCard(pokemon: Pokemon) {
                     text = "Altura: ${pokemon.height} cm",
                     style = MaterialTheme.typography.bodySmall)
             }
-        }
+
+            Button(onClick = { onEdit(pokemon) }) {
+                Text("✏️")
+
+            }
     }
+}
 }
