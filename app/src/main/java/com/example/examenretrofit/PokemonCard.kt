@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -47,34 +48,50 @@ fun PokemonCard(pokemon: Pokemon, onEdit: (Pokemon) -> Unit) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 8.dp),
+                .padding(8.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
 
         ) {
-            //Las tarjetas en cuestion
-            Column(modifier = Modifier.padding(16.dp)) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
 
-                Text(
-                    text = "NºPokedex: ${pokemon.id}",
-                    style = MaterialTheme.typography.titleMedium)
-                Text(
-                    text = "Nombre: ${pokemon.name}",
-                    style = MaterialTheme.typography.titleMedium)
-                Text(
-                    text = "Tipo: ${pokemon.type}",
-                    style = MaterialTheme.typography.bodyMedium)
-                Text(
-                    text = "Peso: ${pokemon.weight} kg",
-                    style = MaterialTheme.typography.bodySmall)
-                Text(
-                    text = "Altura: ${pokemon.height} cm",
-                    style = MaterialTheme.typography.bodySmall)
+                //Las tarjetas en cuestion
+                Column(modifier = Modifier.padding(16.dp)) {
+
+                    Text(
+                        text = "NºPokedex: ${pokemon.id}",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = "Nombre: ${pokemon.name}",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = "Tipo: ${pokemon.type}",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    Text(
+                        text = "Peso: ${pokemon.weight} kg",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                    Text(
+                        text = "Altura: ${pokemon.height} cm",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+
+                Button(
+                    onClick = { onEdit(pokemon) },
+                    modifier = Modifier.padding(start = 16.dp)
+                ) {
+                    Text("✏️")
+                }
             }
-
-            Button(onClick = { onEdit(pokemon) }) {
-                Text("✏️")
-
-            }
+        }
     }
-}
 }

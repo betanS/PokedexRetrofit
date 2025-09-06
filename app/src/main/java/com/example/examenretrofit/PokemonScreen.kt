@@ -37,7 +37,7 @@ fun PokemonScreen(onFetch: ((List<Pokemon>) -> Unit) -> Unit) {
         refreshCallback.value { result -> pokemons = result }
     }
 
-    fun updatePokemon(pokemon: Pokemon, onResult: () -> Unit) {
+    fun updatePokemon(pokemon: Pokemon) {
         coroutineScope.launch {
             try {
                 val response = RetrofitInstance.api.updatePokemon(pokemon.id, pokemon)
@@ -59,9 +59,7 @@ fun PokemonScreen(onFetch: ((List<Pokemon>) -> Unit) -> Unit) {
         PokemonEditDialog(pokemon = pokemon,
             onDismiss = { editingPokemon = null },
             onConfirm = { updated ->
-                updatePokemon(updated) {
-                    editingPokemon = null
-                }
+                updatePokemon(updated)
             }
         )
     }
