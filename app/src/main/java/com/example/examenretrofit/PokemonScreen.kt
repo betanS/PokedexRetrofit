@@ -76,13 +76,13 @@ fun PokemonScreen(onFetch: ((List<Pokemon>) -> Unit) -> Unit) {
                 }) {
                     Text("Cargar Pokemons")
                 }
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(pokemons) { pokemon ->
-                PokemonCard(pokemon) { selected ->
-                    editingPokemon = selected
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                    items(pokemons.sortedBy { it.id }) { pokemon ->
+                        PokemonCard(pokemon) { selected ->
+                            editingPokemon = selected
+                        }
+                    }
                 }
-            }
         }
-    }
     FabMenuDemo(onRefresh = onRefresh)
 }
